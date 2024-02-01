@@ -3,14 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
-    <link rel="stylesheet" href="./assets/styles/reset.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="./assets/scripts/tailwind.js"></script>
     <link rel="stylesheet" href="./assets/styles/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <main></main>
-    <script src="./assets/scripts/main.js"></script>
+    <main class="h-full">
+        <!-- Api Token Form -->
+        <section class="flex justify-center items-center w-full h-full" data-view="login">
+            <div class="h-fit rounded-lg border shadow-sm">
+                <div class="flex flex-col gap-y-1 p-[24px]">
+                    <span class="whitespace-nowrap tracking-tight text-2xl font-bold">API Tokens Required</span>
+                    <span class="text-sm text-muted leading-none">
+                        Please enter your <a href="" target="_blank">TMDB and Youtube API Token</a> below.
+                    </span>
+                </div>
+                <div class="p-[24px]">
+                    <div class="space-y-4">
+                        <div class="flex flex-col gap-y-2">
+                            <label class="text-sm font-medium leading-none select-none">Youtube API Token</label>
+                            <input
+                                id="youtube-token-input"
+                                class="border rounded-lg p-[8px] outline-none" 
+                                placeholder="Enter your access token"
+                                type="password"
+                                required
+                            />
+                        </div>
+                        <div class="flex flex-col gap-y-2">
+                            <label class="text-sm font-medium leading-none select-none">TMDB API Token</label>
+                            <input
+                                id="tmdb-token-input"
+                                class="border rounded-lg p-[8px] outline-none" 
+                                placeholder="Enter your access token"
+                                type="password"
+                                required
+                            />
+                        </div>
+                        <button id="login-button" class="rounded-md text-sm font-medium transition-colors h-10 px-4 py-2 w-full bg-primary hover:bg-primary/90 text-white">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main App -->
+        <section class="flex flex-col h-full hidden" data-view="home">
+            
+        </section>
+    </main>
+    
+    <script type="module" src="./assets/scripts/main.js"></script>
 </body>
 </html>

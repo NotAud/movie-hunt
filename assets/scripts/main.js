@@ -1,15 +1,21 @@
-import { AUTH } from "./authentication.js";
+import { useAuth } from "./auth/authentication.js";
+import { getGenres } from "./api/tmdb.endpoints.js";
+
+const auth = useAuth();
+auth.tmdb.onSuccess(generateGenreList);
+
+auth.tmdb.onSuccess = () => {
+  console.log("Youtube token is valid");
+};
 
 document.addEventListener("DOMContentLoaded", async () => {
   const loginButton = document.querySelector("#login-button");
   loginButton.addEventListener("click", () => {
     const youtubeToken = document.querySelector("#youtube-token-input").value;
-    AUTH.YOUTUBE.value = youtubeToken;
+    auth.youtube.token = youtubeToken;
 
     const tmdbToken = document.querySelector("#tmdb-token-input").value;
-    AUTH.TMDB.value = tmdbToken;
-
-    AUTH.validateSession();
+    auth.tmdb.token = tmdbToken;
   });
 });
 

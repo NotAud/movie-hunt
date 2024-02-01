@@ -9,3 +9,10 @@ html, body {
     width: 100%;
 }
 
+#genre-list > button {
+    transition: all 0.2s ease-in-out;
+}
+
+.selected-genre {
+    outline: solid 1px green;
+}

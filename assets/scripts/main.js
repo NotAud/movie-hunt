@@ -19,6 +19,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
+async function generateGenreList() {
+  const genres = await getGenres();
+  genres.forEach((genre) => {
+    const genreElement = document.createElement("button");
+
+    genreElement.classList.add(
+      "rounded-lg",
+      "border",
+      "shadow-sm",
+      "p-4",
+      "hover:bg-primary/90",
+      "hover:text-white"
+    );
+    genreElement.setAttribute("data-id", genre.id);
+    genreElement.textContent = genre.name;
+
+    genreElement.addEventListener("click", async (e) => {
+      if (e.target.classList.contains("selected-genre")) {
+        e.target.classList.remove("selected-genre");
+      } else {
+        e.target.classList.add("selected-genre");
+      }
+    });
+
+    document.querySelector("#genre-list").appendChild(genreElement);
+  });
+}
+
 // document.addEventListener("DOMContentLoaded", () => {
 //   API_TOKEN.validateToken();
 

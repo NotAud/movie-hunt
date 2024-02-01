@@ -49,8 +49,12 @@
         </section>
 
         <!-- Main App -->
-        <section class="flex flex-col h-full hidden" data-view="home">
-            
+        <section class="flex flex-col justify-center items-center h-full hidden" data-view="home">
+            <div class="flex flex-col w-fit rounded-lg border shadow-sm p-4 max-w-[60%]">
+                <div id="genre-list" class="flex flex-wrap justify-center gap-1 transition-all"></div>
+                <hr class="my-2" />
+                <button class="rounded-md text-sm font-medium transition-colors h-10 px-4 py-2 w-full bg-primary hover:bg-primary/90 text-white">Search</button>
+            </div>
         </section>
     </main>
     

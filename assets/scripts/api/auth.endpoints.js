@@ -1,7 +1,3 @@
-export async function getYoutubeAuthentication(token) {
-  return true;
-}
-
 export async function getTMDBAuthentication(token) {
   const response = await fetch("https://api.themoviedb.org/3/authentication", {
     method: "GET",
@@ -14,4 +10,15 @@ export async function getTMDBAuthentication(token) {
   const data = await response.json();
 
   return data.success;
+}
+
+export async function getOMDBAuthentication(token) {
+  const BASE_URL = "http://www.omdbapi.com/";
+  const requestUrl = `${BASE_URL}?t=avengers&apikey=${token}`;
+
+  const response = await fetch(requestUrl);
+
+  const data = await response.json();
+
+  return data.Response === "True";
 }

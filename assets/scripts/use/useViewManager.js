@@ -1,6 +1,7 @@
 const VIEWS = {
   LOGIN: "login",
   HOME: "home",
+  FAVORITES: "favorites",
   CAROUSEL: "carousel",
 };
 
@@ -16,7 +17,15 @@ export function useViewManager() {
     });
   }
 
+  function currentView() {
+    const viewElements = document.querySelectorAll("[data-view]");
+    return Array.from(viewElements).find((viewElement) => {
+      return !viewElement.classList.contains("hidden");
+    }).dataset.view;
+  }
+
   return {
+    currentView,
     VIEWS,
     change,
   };

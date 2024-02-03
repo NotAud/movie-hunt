@@ -1,8 +1,8 @@
 import {
   getTMDBAuthentication,
-  getYoutubeAuthentication,
+  getOMDBAuthentication,
 } from "../api/auth.endpoints.js";
-import { useViewManager } from "../viewManager.js";
+import { useViewManager } from "./useViewManager.js";
 
 const viewManager = useViewManager();
 
@@ -68,24 +68,36 @@ class TokenProvider {
   }
 }
 
-const youtubeToken = new TokenProvider("youtube", getYoutubeAuthentication);
+const omdbToken = new TokenProvider("omdb", getOMDBAuthentication);
 const tmdbToken = new TokenProvider("tmdb", getTMDBAuthentication);
 
 export function useAuth() {
+  function logout() {
+    resetAuth();
+    viewManager.change(viewManager.VIEWS.LOGIN);
+  }
+
   return {
-    youtube: youtubeToken,
+    logout,
+    omdb: omdbToken,
     tmdb: tmdbToken,
   };
 }
 
 function resetAuth() {
-  youtubeToken.resetToken();
+  omdbToken.resetToken();
   tmdbToken.resetToken();
+
+  const nav = document.querySelector("nav");
+  nav.classList.add("hidden");
 }
 
 function validateAuth() {
-  if (youtubeToken.token && tmdbToken.token) {
+  if (omdbToken.token && tmdbToken.token) {
     viewManager.change(viewManager.VIEWS.HOME);
+
+    const nav = document.querySelector("nav");
+    nav.classList.remove("hidden");
   } else {
     resetAuth();
     viewManager.change(viewManager.VIEWS.LOGIN);

@@ -1,4 +1,6 @@
 import { useAuth } from "./use/useAuth.js";
+import { useViewManager } from "./use/useViewManager.js";
+import { useCarousel } from "./use/useCarousel.js";
 
 // Use our auth manager to validate our tokens and run our onSuccess functions
 const auth = useAuth();
@@ -7,6 +9,9 @@ auth.tmdb.onSuccess(generateGenreList);
 auth.omdb.onSuccess = () => {
   console.log("OMDB token is valid");
 };
+
+const viewManager = useViewManager();
+const carousel = useCarousel();
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Register our login button

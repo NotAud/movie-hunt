@@ -1,6 +1,8 @@
 import { useAuth } from "./use/useAuth.js";
 import { useViewManager } from "./use/useViewManager.js";
 import { useCarousel } from "./use/useCarousel.js";
+import { useFavorites } from "./use/useFavorites.js";
+import { getGenres, getMovieList } from "./api/tmdb.endpoints.js";
 
 // Use our auth manager to validate our tokens and run our onSuccess functions
 const auth = useAuth();
@@ -12,6 +14,7 @@ auth.omdb.onSuccess = () => {
 
 const viewManager = useViewManager();
 const carousel = useCarousel();
+const favorites = useFavorites();
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Register our login button

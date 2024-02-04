@@ -85,6 +85,8 @@ class TokenProvider {
 
 // Create our token providers
 // The two APIs we are using are OMDB and TMDB
+// The two functions passed are endpoints that validate if the token is valid -
+// which are ran when we set our respective tokens
 const omdbToken = new TokenProvider("omdb", getOMDBAuthentication);
 const tmdbToken = new TokenProvider("tmdb", getTMDBAuthentication);
 

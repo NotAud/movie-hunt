@@ -1,6 +1,8 @@
 import { useAuth } from "./use/useAuth.js";
 import { useViewManager } from "./use/useViewManager.js";
 import { useCarousel } from "./use/useCarousel.js";
+import { useFavorites } from "./use/useFavorites.js";
+import { getGenres, getMovieList } from "./api/tmdb.endpoints.js";
 
 // Use our auth manager to validate our tokens and run our onSuccess functions
 const auth = useAuth();
@@ -10,10 +12,36 @@ auth.omdb.onSuccess = () => {
   console.log("OMDB token is valid");
 };
 
+// Set up some necessary wrappers that we will generally use
 const viewManager = useViewManager();
 const carousel = useCarousel();
+const favorites = useFavorites();
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Handle navigating to home from the logo button
+  const logoButton = document.querySelector("#logo-button");
+  logoButton.addEventListener("click", () => {
+    if (auth.omdb.token && auth.tmdb.token) {
+      viewManager.change(viewManager.VIEWS.HOME);
+    } else {
+      viewManager.change(viewManager.VIEWS.LOGIN);
+    }
+  });
+
+  // Handle navigating to home from the home button
+  const homeButton = document.querySelector("#home-button");
+  homeButton.addEventListener("click", () => {
+    viewManager.change(viewManager.VIEWS.HOME);
+  });
+
+  // Handle navigating to favorites from the favorites button
+  const favoritesButton = document.querySelector("#favorites-button");
+  favoritesButton.addEventListener("click", () => {
+    // Generate our favorites before swapping views
+    favorites.generateFavoriteList();
+    viewManager.change(viewManager.VIEWS.FAVORITES);
+  });
+
   // Register our login button
   const loginButton = document.querySelector("#login-button");
   loginButton.addEventListener("click", () => {
@@ -23,6 +51,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const tmdbToken = document.querySelector("#tmdb-token-input").value;
     auth.tmdb.token = tmdbToken;
+  });
+
+  // Register our logout button and let auth handle the logout when clicked
+  const logoutButton = document.querySelector("#logout-button");
+  logoutButton.addEventListener("click", () => {
+    auth.logout();
   });
 
   // Handle when we click the search button from the genres page

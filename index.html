@@ -11,6 +11,18 @@
 </head>
 <body>
     <main class="h-full overflow-hidden">
+        <!-- Nav -->
+        <header class="flex gap-x-10 items-center absolute w-full border-b p-4 min-h-[73px]">
+            <h1 id="logo-button" class="text-2xl font-medium cursor-pointer select-none">Movie Search</h1>
+            <nav class="flex flex-grow justify-between hidden">
+                <div class="flex gap-x-4 font-medium">
+                    <button id="home-button" class="px-2 hover:border-b border-b-primary/70">Home</button>
+                    <button id="favorites-button" class="px-2 hover:border-b border-b-primary/70">Favorites</button>
+                </div>
+                <button id="logout-button" class="rounded-md text-sm font-medium transition-colors h-10 px-4 py-2 w-fit bg-primary hover:bg-primary/90 text-white">Logout</button>
+            </nav>
+        </header>
+
         <!-- Api Token Form -->
         <section class="flex justify-center items-center w-full h-full" data-view="login">
             <div class="h-fit rounded-lg border shadow-sm">
@@ -47,6 +59,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Main App -->
         <section class="flex flex-col justify-center items-center h-full hidden" data-view="home">
             <div class="flex flex-col w-fit rounded-lg border shadow-sm p-4 max-w-[60%]">
@@ -55,21 +68,32 @@
                 <button id="search-movies-button" class="rounded-md text-sm font-medium transition-colors h-10 px-4 py-2 w-full bg-primary hover:bg-primary/90 text-white">Search</button>
             </div>
         </section>
-    </main>
+        
+        <!-- Movie carousel -->
+        <section class="flex flex-col gap-y-8 justify-center items-center h-full hidden" data-view="carousel">
+            <div id="carousel-container" class="flex justify-center relative w-screen h-1/2">
+                <button id="carousel-prev" class="flex justify-center items-center rounded-full w-10 h-10 absolute left-5 top-1/2 z-10 bg-primary hover:bg-primary/90 hover:scale-110 transition-all">
+                    <i class="fas fa-arrow-left text-white"></i>
+                </button>
+                <div id="movie-carousel" class="flex justify-evenly gap-x-10 w-[90%]"></div>
+                <button id="carousel-next" class="flex justify-center items-center rounded-full w-10 h-10 absolute right-5 top-1/2 z-10 bg-primary hover:bg-primary/90 hover:scale-110 transition-all">
+                    <i class="fas fa-arrow-right text-white"></i>
+                </button>
+            </div>
+            <button id="exit-carousel-button" class="rounded-md text-sm font-medium transition-colors h-10 px-10 py-2 w-fit bg-primary hover:bg-primary/90 text-white">Back</button>
+        </section>
 
-    <!-- Movie carousel -->
-    <section class="flex flex-col gap-y-8 justify-center items-center h-full hidden" data-view="carousel">
-        <div id="carousel-container" class="flex justify-center relative w-screen h-1/2">
-            <button id="carousel-prev" class="flex justify-center items-center rounded-full w-10 h-10 absolute left-5 top-1/2 z-10 bg-primary hover:bg-primary/90 hover:scale-110 transition-all">
-                <i class="fas fa-arrow-left text-white"></i>
-            </button>
-            <div id="movie-carousel" class="flex justify-evenly gap-x-10 w-[90%]"></div>
-            <button id="carousel-next" class="flex justify-center items-center rounded-full w-10 h-10 absolute right-5 top-1/2 z-10 bg-primary hover:bg-primary/90 hover:scale-110 transition-all">
-                <i class="fas fa-arrow-right text-white"></i>
-            </button>
+        <!-- Favorites -->
+        <section class="flex flex-col gap-y-8 justify-center items-center h-full hidden" data-view="favorites">
+            <div id="favorites-container" class="flex flex-col gap-y-4 rounded-lg border shadow-sm p-4 w-[60%] text-center"></div>
+        </section>
+
+        <!-- Movie Overlay -->
+        <div id="movie-overlay" class="flex justify-center items-center absolute bg-primary/90 w-full h-full z-20 top-0 hidden">
+            <div id="movie-container" class="flex flex-col rounded-lg border shadow-sm bg-white w-[560px]"></div>
         </div>
-        <button id="exit-carousel-button" class="rounded-md text-sm font-medium transition-colors h-10 px-10 py-2 w-fit bg-primary hover:bg-primary/90 text-white">Back</button>
-    </section>
+    </main>
+    
     <script type="module" src="./assets/scripts/main.js"></script>
 </body>
 </html>

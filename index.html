@@ -3,14 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
-    <link rel="stylesheet" href="./assets/styles/reset.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/scripts/tailwind.js"></script>
+    <script src="https://kit.fontawesome.com/7d14b767c7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/styles/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <main></main>
-    <script src="./assets/scripts/main.js"></script>
+    <main class="h-full overflow-hidden">
+        <!-- Api Token Form -->
+        <section class="flex justify-center items-center w-full h-full" data-view="login">
+            <div class="h-fit rounded-lg border shadow-sm">
+                <div class="flex flex-col gap-y-1 p-[24px]">
+                    <span class="whitespace-nowrap tracking-tight text-2xl font-bold">API Tokens Required</span>
+                    <span class="text-sm text-muted leading-none">
+                        Please enter your <a href="" target="_blank">TMDB and OMDB API Token</a> below.
+                    </span>
+                </div>
+                <div class="p-[24px]">
+                    <div class="space-y-4">
+                        <div class="flex flex-col gap-y-2">
+                            <label class="text-sm font-medium leading-none select-none">OMDB API Token</label>
+                            <input
+                                id="omdb-token-input"
+                                class="border rounded-lg p-[8px] outline-none" 
+                                placeholder="Enter your access token"
+                                type="password"
+                                required
+                            />
+                        </div>
+                        <div class="flex flex-col gap-y-2">
+                            <label class="text-sm font-medium leading-none select-none">TMDB API Token</label>
+                            <input
+                                id="tmdb-token-input"
+                                class="border rounded-lg p-[8px] outline-none" 
+                                placeholder="Enter your access token"
+                                type="password"
+                                required
+                            />
+                        </div>
+                        <button id="login-button" class="rounded-md text-sm font-medium transition-colors h-10 px-4 py-2 w-full bg-primary hover:bg-primary/90 text-white">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Main App -->
+        <section class="flex flex-col justify-center items-center h-full hidden" data-view="home">
+            <div class="flex flex-col w-fit rounded-lg border shadow-sm p-4 max-w-[60%]">
+                <div id="genre-list" class="flex flex-wrap justify-center gap-1 transition-all"></div>
+                <hr class="my-2" />
+                <button id="search-movies-button" class="rounded-md text-sm font-medium transition-colors h-10 px-4 py-2 w-full bg-primary hover:bg-primary/90 text-white">Search</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Movie carousel -->
+    <section class="flex flex-col gap-y-8 justify-center items-center h-full hidden" data-view="carousel">
+        <div id="carousel-container" class="flex justify-center relative w-screen h-1/2">
+            <button id="carousel-prev" class="flex justify-center items-center rounded-full w-10 h-10 absolute left-5 top-1/2 z-10 bg-primary hover:bg-primary/90 hover:scale-110 transition-all">
+                <i class="fas fa-arrow-left text-white"></i>
+            </button>
+            <div id="movie-carousel" class="flex justify-evenly gap-x-10 w-[90%]"></div>
+            <button id="carousel-next" class="flex justify-center items-center rounded-full w-10 h-10 absolute right-5 top-1/2 z-10 bg-primary hover:bg-primary/90 hover:scale-110 transition-all">
+                <i class="fas fa-arrow-right text-white"></i>
+            </button>
+        </div>
+        <button id="exit-carousel-button" class="rounded-md text-sm font-medium transition-colors h-10 px-10 py-2 w-fit bg-primary hover:bg-primary/90 text-white">Back</button>
+    </section>
+    <script type="module" src="./assets/scripts/main.js"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ export async function getTMDBAuthentication(token) {
 
 // Check if passed auth token is valid and return bool based on success
 export async function getOMDBAuthentication(token) {
-  const BASE_URL = "http://www.omdbapi.com/";
+  const BASE_URL = "https://www.omdbapi.com/";
   const requestUrl = `${BASE_URL}?t=avengers&apikey=${token}`;
 
   const response = await fetch(requestUrl);

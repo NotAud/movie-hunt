@@ -30,6 +30,12 @@ The TMDB API key can be requested from here: https://www.themoviedb.org/settings
 
 OMDB does not require an account, but TMDB requires you to sign-up before generating a key.
 
+## Deployment
+
+[Live Deployment](https://notaud.github.io/movie-hunt/)
+
+![Example Image of Page](https://imgur.com/l1HAdbO.png)
+
 ## Usage
 
 To use the APP 'Login' with your two API keys. Once you have valid API keys, you can start selecting genres you would like to search by. After searching by the genres you selected, a carousel of movies will be available for selection. By clicking any of these movies, you may get some general information about them and watch a preview. If any movie looks interesting you may click a favorites button, which can be viewed at any later time from the favorites page.

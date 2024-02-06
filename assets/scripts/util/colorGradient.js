@@ -1,3 +1,5 @@
+// https://stackoverflow.com/a/17267684
+
 // Convert a percentage into a color gradient using HSL
 // Our use-case is a percentage to a color between red and green
 export function colorGradient(percent, start, end) {

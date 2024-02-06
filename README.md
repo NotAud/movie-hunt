@@ -23,12 +23,10 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-This project requires two api keys: One from OMDB and another from TMDB.
-The OMDB API key can be requested from here: https://www.omdbapi.com/apikey.aspx
+This project requires two api keys: One from [OMDB](https://www.omdbapi.com/apikey.aspx) and another from [TMDB](https://www.themoviedb.org/settings/api).
 
-The TMDB API key can be requested from here: https://www.themoviedb.org/settings/api
-
-OMDB does not require an account, but TMDB requires you to sign-up before generating a key.
+OMDB does not require an account, but does require an email.  
+TMDB does require a full account before generating an API key.
 
 ## Deployment
 

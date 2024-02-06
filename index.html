@@ -7,13 +7,19 @@
     <script src="./assets/scripts/tailwind.js"></script>
     <script src="https://kit.fontawesome.com/7d14b767c7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/styles/styles.css">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/logo.ico">
+    <title>MovieHunt</title>
 </head>
 <body>
     <main class="h-full overflow-hidden">
         <!-- Nav -->
         <header class="flex gap-x-10 items-center absolute w-full border-b p-4 min-h-[73px]">
-            <h1 id="logo-button" class="text-2xl font-medium cursor-pointer select-none">Movie Search</h1>
+            <button id="logo-button" class="flex items-center select-none">
+                <img class="h-[32px]" src="./assets/images/logo.png" />
+                <div class="bg-white h-[22px] rounded-full relative -left-2 -bottom-1">
+                    <h1 class="text-2xl font-medium leading-[20px] pl-1">MovieHunt</h1>
+                </div>
+            </button>
             <nav class="flex flex-grow justify-between hidden">
                 <div class="flex gap-x-4 font-medium">
                     <button id="home-button" class="px-2 hover:border-b border-b-primary/70">Home</button>
